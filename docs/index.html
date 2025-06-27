@@ -10,12 +10,16 @@
 
   <h2>Steps to Use</h2>
   <ol>
-    <li>Install the <strong><a href="https://www.tampermonkey.net/" target="_blank">Tampermonkey extension</a></strong> in your browser.</li>
+    <li>Install the <strong><a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank">Tampermonkey Chrome Extension</a></strong>.</li>
     <li>Fill in the required details below.</li>
     <li>Click <strong>“Generate Script”</strong> to get your customized autofill script.</li>
     <li>Click <strong>“Install to Tampermonkey”</strong> to open and install your script.</li>
-    <li>Go to <a href="https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=80633" target="_blank">SBI Collect (PCDA SWC JAIPUR)</a> — your form will be auto-filled up to the captcha.</li>
+    <li>Click the button below to open <strong>SBI Collect</strong> site.</li>
   </ol>
+
+  <button onclick="window.open('https://www.onlinesbi.sbi/sbicollect/icollecthome.htm', '_blank')">
+    Go to SBI Collect Website
+  </button>
 
   <h2>Step 2: Fill Required Fields</h2>
   <form id="autofill-form">
@@ -53,15 +57,14 @@
       const formData = new FormData(form);
       const values = Object.fromEntries(formData.entries());
 
-      // Auto fill remaining fixed fields
       const userData = JSON.stringify({
         outref11: "AO GE S Banar Jodhpur",
         outref12: "ARMY",
         outref22: "Serving Officer or Personnel",
         outref15: "",
         outref19: "ELECTRICITY AND WATER CHARGES",
-        outref23: "Reoccuring payment",
-        transactionRemarks: "Advance Payment payment",
+        outref23: "Reoccuring Payments",
+        transactionRemarks: "Advance payment",
         dateOfBirth: new Date().toLocaleDateString("en-GB"),
         formInd: "formInd",
         fileOrg: "fileOrg",
@@ -74,7 +77,7 @@
         captchaValue: "",
         capOption: "IMG",
         ...values,
-        mobileNo: values.outref17 // also copy to main mobileNo
+        mobileNo: values.outref17
       }, null, 4);
 
       const finalScript = template.replace("/*__USER_DATA__*/", `const userData = ${userData};`);
