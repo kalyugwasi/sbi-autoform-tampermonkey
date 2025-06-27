@@ -3,105 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SBI Collect Autofill</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 2rem;
-      background: #f9f9f9;
-      color: #333;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    h1 {
-      font-size: 2rem;
-      margin: 0;
-    }
-    p {
-      color: #555;
-    }
-    .container {
-      max-width: 700px;
-      margin: auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-    }
-    button, a.button {
-      background: #0a58ca;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      text-decoration: none;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      display: inline-block;
-      margin: 0.5rem 0;
-      font-size: 1rem;
-    }
-    a.button:hover {
-      background: #004ba0;
-    }
-    .steps {
-      margin: 1rem 0;
-    }
-    ol {
-      padding-left: 1.2rem;
-    }
-    li {
-      margin-bottom: 1rem;
-    }
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      margin-top: 2rem;
-      color: #888;
-    }
-  </style>
+  <title>SBI AutoForm - Streamline Your Banking Experience</title>
+  <meta name="description" content="Automate SBI banking forms with our secure script. Save time and reduce errors." />
+  <meta name="keywords" content="SBI, autofill, form automation, Tampermonkey, banking" />
+  <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <header>
       <h1>🔐 SBI Collect Autofill</h1>
-      <p>Automate most of the form filling — manually solve only the captcha.</p>
+      <p>Automate SBI form filling — manually solve only the captcha.</p>
     </header>
 
-    <div class="steps">
-      <h2>🚀 Get Started</h2>
-      <ol>
-        <li>
-          <strong>Install Tampermonkey Extension</strong><br/>
-          <a class="button" target="_blank" href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo">Install Tampermonkey</a>
-        </li>
-        <li>
-          <strong>Install the Autofill Script</strong><br/>
-          <a class="button" href="sbi-autofill.user.js">Install Script</a>
-        </li>
-        <li>
-          <strong>Fill required fields in the script:</strong><br/>
-          - Name of Depositor<br/>
-          - Personnel Number<br/>
-          - PAN Number<br/>
-          - Mobile Number<br/>
-          - Postal Address<br/>
-          - Amount (₹)<br/>
-          - Email ID<br/>
-          (Edit inside Tampermonkey script dashboard.)
-        </li>
-        <li>
-          <strong>Visit SBI Collect</strong><br/>
-          <a class="button" target="_blank" href="https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=80633">Go to SBI Collect</a>
-        </li>
-      </ol>
-    </div>
+    <main>
+      <section class="steps">
+        <h2>🚀 Get Started</h2>
+        <ol>
+          <li>
+            <strong>Install Tampermonkey Extension</strong><br/>
+            <a class="button" target="_blank" href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo">Install Tampermonkey</a>
+          </li>
+          <li>
+            <strong>Install the Autofill Script</strong><br/>
+            <a class="button" href="sbi-autofill.user.js">Install Script</a>
+          </li>
+          <li>
+            <strong>Fill your details:</strong><br/>
+            Open Tampermonkey → Edit script:
+            <ul>
+              <li>Name of Depositor</li>
+              <li>Personnel Number</li>
+              <li>PAN Number</li>
+              <li>Mobile Number</li>
+              <li>Postal Address</li>
+              <li>Amount (₹)</li>
+              <li>Email ID</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Visit SBI Collect Page</strong><br/>
+            <a class="button" target="_blank" href="https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=80633">Go to SBI Collect</a>
+          </li>
+        </ol>
+      </section>
+
+      <section class="preview">
+        <h2>📸 Script Preview</h2>
+        <img src="https://lovable.dev/opengraph-image-p98pqg.png" alt="Preview of SBI Autofill Script" />
+      </section>
+    </main>
 
     <footer>
       Made with ❤️ by <a href="https://github.com/kalyugwasi" target="_blank">kalyugwasi</a>
     </footer>
   </div>
+
+  <script src="template.js"></script>
 </body>
 </html>
