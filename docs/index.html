@@ -2,93 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SBI Collect Autofill Script Generator</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SBI Collect Autofill</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+    p {
+      color: #555;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    }
+    button, a.button {
+      background: #0a58ca;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-block;
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+    a.button:hover {
+      background: #004ba0;
+    }
+    .steps {
+      margin: 1rem 0;
+    }
+    ol {
+      padding-left: 1.2rem;
+    }
+    li {
+      margin-bottom: 1rem;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      color: #888;
+    }
+  </style>
 </head>
 <body>
-  <h1>SBI Collect Autofill Script Generator</h1>
+  <div class="container">
+    <header>
+      <h1>🔐 SBI Collect Autofill</h1>
+      <p>Automate most of the form filling — manually solve only the captcha.</p>
+    </header>
 
-  <h2>Steps to Use</h2>
-  <ol>
-    <li>Install the <strong><a href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank">Tampermonkey Chrome Extension</a></strong>.</li>
-    <li>Fill in the required details below.</li>
-    <li>Click <strong>“Generate Script”</strong> to get your customized autofill script.</li>
-    <li>Click <strong>“Install to Tampermonkey”</strong> to open and install your script.</li>
-    <li>Click the button below to open <strong>SBI Collect</strong> site.</li>
-  </ol>
+    <div class="steps">
+      <h2>🚀 Get Started</h2>
+      <ol>
+        <li>
+          <strong>Install Tampermonkey Extension</strong><br/>
+          <a class="button" target="_blank" href="https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo">Install Tampermonkey</a>
+        </li>
+        <li>
+          <strong>Install the Autofill Script</strong><br/>
+          <a class="button" href="sbi-autofill.user.js">Install Script</a>
+        </li>
+        <li>
+          <strong>Fill required fields in the script:</strong><br/>
+          - Name of Depositor<br/>
+          - Personnel Number<br/>
+          - PAN Number<br/>
+          - Mobile Number<br/>
+          - Postal Address<br/>
+          - Amount (₹)<br/>
+          - Email ID<br/>
+          (Edit inside Tampermonkey script dashboard.)
+        </li>
+        <li>
+          <strong>Visit SBI Collect</strong><br/>
+          <a class="button" target="_blank" href="https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=80633">Go to SBI Collect</a>
+        </li>
+      </ol>
+    </div>
 
-  <button onclick="window.open('https://www.onlinesbi.sbi/sbicollect/icollecthome.htm', '_blank')">
-    Go to SBI Collect Website
-  </button>
-
-  <h2>Step 2: Fill Required Fields</h2>
-  <form id="autofill-form">
-    <label>Name of the Depositor *<br><input type="text" name="outref13" required></label>
-
-    <label>Personnel Number *<br><input type="text" name="outref14" required></label>
-
-    <label>PAN Number<br><input type="text" name="outref16"></label>
-
-    <label>Mobile No. *<br><input type="text" name="outref17" required></label>
-
-    <label>Postal Address *<br><input type="text" name="outref18" required></label>
-
-    <label>AMOUNT IN RS. (ROUNDED) *<br><input type="text" name="outref21" required></label>
-
-    <label>Name *<br><input type="text" name="cusName" required></label>
-
-    <label>Email ID<br><input type="email" name="emailId"></label>
-
-    <button type="submit">Generate Script</button>
-  </form>
-
-  <h2>Your Tampermonkey Script</h2>
-  <pre id="script-output"></pre>
-  <button id="install-btn" style="display:none;">Install to Tampermonkey</button>
-
-  <script src="template.js"></script>
-  <script>
-    const form = document.getElementById('autofill-form');
-    const output = document.getElementById('script-output');
-    const installBtn = document.getElementById('install-btn');
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const values = Object.fromEntries(formData.entries());
-
-      const userData = JSON.stringify({
-        outref11: "AO GE S Banar Jodhpur",
-        outref12: "ARMY",
-        outref22: "Serving Officer or Personnel",
-        outref15: "",
-        outref19: "ELECTRICITY AND WATER CHARGES",
-        outref23: "Reoccuring Payments",
-        transactionRemarks: "Advance payment",
-        dateOfBirth: new Date().toLocaleDateString("en-GB"),
-        formInd: "formInd",
-        fileOrg: "fileOrg",
-        cusName12: "",
-        orgName: "",
-        dateOfBirth12: "",
-        mobileNo12: "",
-        emailId12: "",
-        corporate_1: "option1",
-        captchaValue: "",
-        capOption: "IMG",
-        ...values,
-        mobileNo: values.outref17
-      }, null, 4);
-
-      const finalScript = template.replace("/*__USER_DATA__*/", `const userData = ${userData};`);
-      output.textContent = finalScript;
-
-      const blob = new Blob([finalScript], { type: 'text/javascript' });
-      const url = URL.createObjectURL(blob);
-
-      installBtn.style.display = "inline-block";
-      installBtn.onclick = () => window.open(url, "_blank");
-    });
-  </script>
+    <footer>
+      Made with ❤️ by <a href="https://github.com/kalyugwasi" target="_blank">kalyugwasi</a>
+    </footer>
+  </div>
 </body>
 </html>
