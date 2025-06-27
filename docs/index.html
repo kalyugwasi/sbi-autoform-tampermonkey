@@ -1,10 +1,10 @@
-<!DOCTYPE html>More actions
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+<meta charset="UTF-8" />
   <title>SBI Collect Autofill Generator</title>
   <title>SBI Collect Autofill Script Generator</title>
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>SBI Collect Autofill Generator</h1>
@@ -20,7 +20,7 @@
   </ol>
 
   <h2>Step 2: Fill Required Fields</h2>
-  <form id="autofill-form">
+<form id="autofill-form">
     <label>Name of Office: <input type="text" name="outref11" required></label>
     <label>Organisation: <input type="text" name="outref12" required></label>
     <label>Depositor Name: <input type="text" name="outref13" required></label>
@@ -50,33 +50,33 @@
 
     <label>Email ID<br><input type="email" name="emailId"></label>
 
-    <button type="submit">Generate Script</button>
-  </form>
+<button type="submit">Generate Script</button>
+</form>
 
   <h2>Your Script</h2>
   <h2>Your Tampermonkey Script</h2>
-  <pre id="script-output"></pre>
-  <button id="install-btn" style="display:none;">Install to Tampermonkey</button>
+<pre id="script-output"></pre>
+<button id="install-btn" style="display:none;">Install to Tampermonkey</button>
 
-  <script src="template.js"></script>
-  <script>
-    const form = document.getElementById('autofill-form');
-    const output = document.getElementById('script-output');
-    const installBtn = document.getElementById('install-btn');
+<script src="template.js"></script>
+<script>
+const form = document.getElementById('autofill-form');
+const output = document.getElementById('script-output');
+const installBtn = document.getElementById('install-btn');
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const values = Object.fromEntries(formData.entries());
+form.addEventListener('submit', e => {
+e.preventDefault();
+const formData = new FormData(form);
+const values = Object.fromEntries(formData.entries());
 
       // Build userData JS object
       // Auto fill remaining fixed fields
-      const userData = JSON.stringify({
+const userData = JSON.stringify({
         ...values,
         outref11: "AO GE S Banar Jodhpur",
         outref12: "ARMY",
         outref22: "Serving Officer or Personnel",
-        outref15: "",
+outref15: "",
         transactionRemarks: "adv payment",
         dateOfBirth: new Date().toLocaleDateString("en-GB")
         outref19: "ELECTRICITY AND WATER CHARGES",
@@ -95,18 +95,18 @@
         capOption: "IMG",
         ...values,
         mobileNo: values.outref17 // also copy to main mobileNo
-      }, null, 4);
+}, null, 4);
 
-      const finalScript = template.replace("/*__USER_DATA__*/", `const userData = ${userData};`);
-      output.textContent = finalScript;
+const finalScript = template.replace("/*__USER_DATA__*/", `const userData = ${userData};`);
+output.textContent = finalScript;
 
       // Encode and create blob install link
-      const blob = new Blob([finalScript], { type: 'text/javascript' });
-      const url = URL.createObjectURL(blob);
+const blob = new Blob([finalScript], { type: 'text/javascript' });
+const url = URL.createObjectURL(blob);
 
-      installBtn.style.display = "inline-block";
-      installBtn.onclick = () => window.open(url, "_blank");
-    });
-  </script>
+installBtn.style.display = "inline-block";
+installBtn.onclick = () => window.open(url, "_blank");
+});
+</script>
 </body>
 </html>
