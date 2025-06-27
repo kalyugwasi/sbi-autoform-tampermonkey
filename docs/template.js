@@ -2,7 +2,7 @@ const template = `
 // ==UserScript==
 // @name         SBI Collect Autofill (Custom)
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  Autofills SBI Collect form up to captcha step (based on your inputs), and skips the first page
 // @match        https://www.onlinesbi.sbi/sbicollect/icollecthome.htm*
 // @match        https://www.onlinesbi.sbi/sbicollect/payment/listcategory.htm*
@@ -49,6 +49,10 @@ const template = `
     function autoFillForm() {
         const filledIds = Object.keys(userData);
         filledIds.forEach(id => setValue(id, userData[id]));
+
+        // Radio / checkbox for payment
+        const radio = document.getElementById("corporate_1");
+        if (radio) radio.checked = true;
     }
 
     const onLandingPage = location.href.includes("icollecthome.htm");
