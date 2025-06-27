@@ -14,12 +14,15 @@
     <li>Fill in the required details below.</li>
     <li>Click <strong>“Generate Script”</strong> to get your customized autofill script.</li>
     <li>Click <strong>“Install to Tampermonkey”</strong> to open and install your script.</li>
-    <li>Click the button below to open <strong>SBI Collect</strong> site.</li>
+    <li>Use the box below to open the SBI Collect website with your specific <code>corpID</code>.</li>
   </ol>
 
-  <button onclick="window.open('https://www.onlinesbi.sbi/sbicollect/icollecthome.htm', '_blank')">
-    Go to SBI Collect Website
-  </button>
+  <h2>Step 1: Open SBI Collect Website</h2>
+  <label>corpID (Optional, default = 80633):<br>
+    <input type="text" id="corp-id" placeholder="80633" />
+  </label>
+  <br><br>
+  <button onclick="openSbiCollect()">Go to SBI Collect Website</button>
 
   <h2>Step 2: Fill Required Fields</h2>
   <form id="autofill-form">
@@ -80,7 +83,7 @@
         mobileNo: values.outref17
       }, null, 4);
 
-      const finalScript = template.replace("/*__USER_DATA__*/", `const userData = ${userData};`);
+      const finalScript = template.replace("/*__USER_DATA__*/", \`const userData = \${userData};\`);
       output.textContent = finalScript;
 
       const blob = new Blob([finalScript], { type: 'text/javascript' });
@@ -89,6 +92,12 @@
       installBtn.style.display = "inline-block";
       installBtn.onclick = () => window.open(url, "_blank");
     });
+
+    function openSbiCollect() {
+      const corpID = document.getElementById('corp-id').value.trim() || '80633';
+      const url = \`https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=\${corpID}\`;
+      window.open(url, '_blank');
+    }
   </script>
 </body>
 </html>
