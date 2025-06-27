@@ -1,40 +1,42 @@
-# sbi-autoform-tampermonkey
-# 🏦 SBI Collect AutoForm – Tampermonkey Script
+# SBI Collect AutoFill – Tampermonkey Script
 
-This Tampermonkey userscript auto-fills the SBI Collect form for PCDA SWC JAIPUR payments, up to the captcha.
+Auto-fills the SBI Collect form (up to the CAPTCHA step) using Tampermonkey. Users just need to install the extension, install the script, and input a few details once.
+
+## 🚀 Features
+
+- Autofills form for PCDA SWC JAIPUR
+- Reduces typing time by 90%
+- Tampermonkey-based (safe & local)
+- Leaves CAPTCHA for manual entry
+
+## ✅ Requirements
+
+- Chrome or any Chromium browser
+- Tampermonkey Extension
+
+## 🔧 Setup Instructions
+
+1. **Install Tampermonkey Extension**  
+   👉 [Install from Chrome Web Store](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+
+2. **Install the Script**  
+   👉 [Click to Install the Script](https://kalyugwasi.github.io/sbi-autoform-tampermonkey/sbi-autofill.user.js)
+
+3. **Edit Script in Tampermonkey**  
+   Fill in:
+   - Name of Depositor  
+   - Personnel Number  
+   - PAN  
+   - Mobile Number  
+   - Postal Address  
+   - Amount in ₹  
+   - Email ID
+
+4. **Visit SBI Collect**  
+   👉 [SBI Collect for PCDA SWC JAIPUR](https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=80633)
+
+## 🛡️ Security
+
+Your data is stored locally in your browser via Tampermonkey. We never collect or transmit your information.
 
 ---
-
-## ✅ Features
-
-- Selects category automatically
-- Pre-fills user data on form page
-- Leaves captcha and final submit to the user
-
----
-
-## 🚀 Quick Install
-
-### 1. Install [Tampermonkey](https://www.tampermonkey.net/) on your browser.
-
-### 2. Click to install the script:
-[![Install Script](https://img.shields.io/badge/Install%20Script-Click%20Here-blue)](https://raw.githubusercontent.com/YOUR-USERNAME/sbi-autoform-tampermonkey/main/sbi-autofill.user.js)
-
----
-
-## ✏️ How to Configure
-
-Open the installed script in Tampermonkey Dashboard → Edit → Change the values in the `userData` section to match your personal info.
-
----
-
-## ⚠️ Note
-
-- Captcha must be solved manually.
-- This script is for personal use only. Never share private data publicly.
-
----
-
-## 🛠 Want a UI or persistent settings?
-
-Stay tuned! We may add localStorage or form-based customization in future versions.
