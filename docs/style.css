@@ -1,0 +1,29 @@
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+}
+
+label {
+  display: block;
+  margin: 0.5em 0;
+}
+
+input {
+  width: 100%;
+  padding: 0.5em;
+  margin-top: 0.2em;
+}
+
+button {
+  margin-top: 1em;
+  padding: 0.7em;
+  font-size: 1em;
+}
+
+pre {
+  background: #f4f4f4;
+  padding: 1em;
+  white-space: pre-wrap;
+}
