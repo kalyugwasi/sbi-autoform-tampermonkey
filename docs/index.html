@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>More actions
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -14,7 +14,12 @@
     <li>Fill in the required details below.</li>
     <li>Click <strong>“Generate Script”</strong> to get your customized autofill script.</li>
     <li>Click <strong>“Install to Tampermonkey”</strong> to open and install your script.</li>
+    <li>Click the button below to open <strong>SBI Collect</strong> site.</li>
   </ol>
+
+  <button onclick="window.open('https://www.onlinesbi.sbi/sbicollect/icollecthome.htm', '_blank')">
+    Go to SBI Collect Website
+  </button>
 
   <h2>Step 2: Fill Required Fields</h2>
   <form id="autofill-form">
@@ -58,6 +63,8 @@
         outref22: "Serving Officer or Personnel",
         outref15: "",
         outref19: "ELECTRICITY AND WATER CHARGES",
+        outref23: "126/2 19 FAD",
+        transactionRemarks: "adv payment",
         outref23: "19 FAD",
         transactionRemarks: "Advance payment",
         dateOfBirth: new Date().toLocaleDateString("en-GB"),
@@ -75,7 +82,7 @@
         mobileNo: values.outref17
       }, null, 4);
 
-      const finalScript = template.replace("/*__USER_DATA__*/", \`const userData = \${userData};\`);
+      const finalScript = template.replace("/*__USER_DATA__*/", `const userData = ${userData};`);
       output.textContent = finalScript;
 
       const blob = new Blob([finalScript], { type: 'text/javascript' });
