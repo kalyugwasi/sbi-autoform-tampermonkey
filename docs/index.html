@@ -1,14 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Install SBI Collect Autofill Script</title>
+  <meta charset="UTF-8" />
+  <title>SBI Collect Autofill Generator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Install SBI Autofill Script</h2>
-  <p>Make sure Tampermonkey is installed first.</p>
-  <a href="https://raw.githubusercontent.com/YOUR-USERNAME/sbi-autoform-tampermonkey/main/sbi-autofill.user.js">
-    <button style="font-size: 18px;">Install Script</button>
-  </a>
+  <h1>SBI Collect Autofill Generator</h1>
+
+  <form id="autofill-form">
+    <label>Name of Office: <input type="text" name="outref11" required></label>
+    <label>Organisation: <input type="text" name="outref12" required></label>
+    <label>Depositor Name: <input type="text" name="outref13" required></label>
+    <label>Personnel Status: <input type="text" name="outref22" required></label>
+    <label>Personnel No.: <input type="text" name="outref14" required></label>
+    <label>PAN No.: <input type="text" name="outref16" required></label>
+    <label>Mobile No.: <input type="text" name="outref17" required></label>
+    <label>Postal Address: <input type="text" name="outref18" required></label>
+    <label>Nature of Payment: <input type="text" name="outref19" required></label>
+    <label>Remarks: <input type="text" name="outref23" required></label>
+    <label>Amount (₹): <input type="text" name="outref21" required></label>
+    <label>Customer Name: <input type="text" name="cusName" required></label>
+    <label>Email: <input type="email" name="emailId" required></label>
+    <button type="submit">Generate Script</button>
+  </form>
+
+  <h2>Your Script</h2>
+  <pre id="script-output"></pre>
+  <button id="install-btn" style="display:none;">Install to Tampermonkey</button>
+
+  <script src="template.js"></script>
+  <script>
+    const form = document.getElementById('autofill-form');
+    const output = document.getElementById('script-output');
+    const installBtn = document.getElementById('install-btn');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const values = Object.fromEntries(formData.entries());
+
+      // Build userData JS object
+      const userData = JSON.stringify({
+        ...values,
+        outref15: "",
+        transactionRemarks: "adv payment",
+        dateOfBirth: new Date().toLocaleDateString("en-GB")
+      }, null, 4);
+
+      const finalScript = template.replace("/*__USER_DATA__*/", `const userData = ${userData};`);
+      output.textContent = finalScript;
+
+      // Encode and create blob install link
+      const blob = new Blob([finalScript], { type: 'text/javascript' });
+      const url = URL.createObjectURL(blob);
+
+      installBtn.style.display = "inline-block";
+      installBtn.onclick = () => window.open(url, "_blank");
+    });
+  </script>
 </body>
 </html>
